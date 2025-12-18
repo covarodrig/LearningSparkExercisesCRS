@@ -1,0 +1,15 @@
+# Maven
+target/
+*.log
+
+# IntelliJ
+.idea/
+*.iml
+
+# Scala
+.metals/
+.bloop/
+
+# OS
+.DS_Store
+Thumbs.db
