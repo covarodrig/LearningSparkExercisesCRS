@@ -1,7 +1,7 @@
 import utils.Spark
 import exercises.chapter2.Chapter2Runner
 import exercises.chapter3.Chapter3Runner
-//import exercises.chapter3.Chapter4Runner
+import exercises.chapter4.ExerciseFlights
 import exercises.chapter5.RelationalOps
 
 
@@ -11,7 +11,7 @@ object Main {
     try {
       // Chapter2Runner.run(spark)
       // Chapter3Runner.run(spark)
-      // Chapter4Runner.run(spark)
+      // ExerciseFlights.run(spark)
       RelationalOps.run(spark)
     } finally {
       spark.stop()
