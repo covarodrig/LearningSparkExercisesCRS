@@ -18,6 +18,9 @@
         <scala.binary.version>2.12</scala.binary.version>
         <spark.version>3.5.2</spark.version>
 
+        <!-- Delta Lake (compatible con Spark 3.5.x) -->
+        <delta.version>3.3.2</delta.version>
+
         <!-- Logging -->
         <log4j2.version>2.22.1</log4j2.version>
     </properties>
@@ -55,6 +58,14 @@
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-sql_${scala.binary.version}</artifactId>
             <version>${spark.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Delta Lake (modo cluster / spark-submit): PROVIDED -->
+        <dependency>
+            <groupId>io.delta</groupId>
+            <artifactId>delta-spark_${scala.binary.version}</artifactId>
+            <version>${delta.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -159,7 +170,6 @@
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <!-- Main cuelga directamente de src/main/scala -->
                                     <mainClass>Main</mainClass>
                                 </transformer>
                             </transformers>
@@ -185,6 +195,13 @@
                     <groupId>org.apache.spark</groupId>
                     <artifactId>spark-sql_${scala.binary.version}</artifactId>
                     <version>${spark.version}</version>
+                </dependency>
+
+                <!-- Delta Lake en local (sin provided) -->
+                <dependency>
+                    <groupId>io.delta</groupId>
+                    <artifactId>delta-spark_${scala.binary.version}</artifactId>
+                    <version>${delta.version}</version>
                 </dependency>
             </dependencies>
         </profile>
